@@ -1,3 +1,47 @@
+# print(type(1))		#<class 'int'>
+# print(type(1.1))	#<class 'float'>
+# print(type('string'))	#<class 'str'>
+# one, two, three = 1, 'two', 3.0
+# print('one:' + str(one) + ', two: ' + two + ', three:' + str(three))
+
+# sigle line comment with # in front of each line
+# multi lines comment 
+'''
+comment line 1
+comment line 2
+comment line 3
+'''
+
+# print(2**3) # 2^3 = 8
+# print(8//3) # return 2 because of 3+3+2 = 8, there are 2 three here
+# print(3.3 * 3) # 9.899999999999999, binary issue
+
+# print(1 << 3) # 0001 --> 1000 in binary, output 8
+# print(8 >> 3) # 1000 --> 0001 in binary, output 1
+# print(8 & 7)	# and
+# '''
+# both bit number have to be 1, otherwise that bit = 0
+# 8 -> 1000
+# 7 -> 0111
+# result 0000
+# '''
+# print(8 | 7)	# or
+# '''
+# either 1 bit of those number have 1, then ther result for that bit is 1
+# 8 -> 1000
+# 7 -> 0111
+# result 1111
+# '''
+
+# print(60 ^ 13)	# xor
+# '''
+# both bit have to be different then get 1 for that bit
+# 60  -> 00111100
+# 13  -> 00001101
+# result 00110001
+# '''
+
+
 def variables():
 	a = 1
 	b = a + 1
@@ -228,4 +272,5 @@ def file_io():
 # # 1st item
 # # 2nddd item
 # # 3th item
+
 
