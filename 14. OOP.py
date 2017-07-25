@@ -8,6 +8,21 @@
 # class definition and object istantiation
 # class a collection o attribites that are defined for nay object data members, methods
 
+# Operator					Expression		Internally
+# Addition					p1 + p2			p1.__add__(p2)
+# Subtraction				p1 - p2			p1.__sub__(p2)
+# Multiplication			p1 * p2			p1.__mul__(p2)
+# Power						p1 ** p2		p1.__pow__(p2)
+# Division					p1 / p2			p1.__truediv__(p2)
+# Floor Division			p1 // p2		p1.__floordiv__(p2)
+# Remainder (modulo)		p1 % p2			p1.__mod__(p2)
+# Bitwise Left Shift		p1 << p2		p1.__lshift__(p2)
+# Bitwise Right Shift		p1 >> p2		p1.__rshift__(p2)
+# Bitwise AND				p1 & p2			p1.__and__(p2)
+# Bitwise OR				p1 | p2			p1.__or__(p2)
+# Bitwise XOR				p1 ^ p2			p1.__xor__(p2)
+# Bitwise NOT				~p1				p1.__invert__()
+
 
 class calculator:
 	'this class simulates calculator operation'	# dot string, description of the class
@@ -35,12 +50,33 @@ class calculator:
 
 	def printdata(self):
 		print(self.__first, self.__second)
+	def getObjectData(self):
+		return (self.__first, self.__second)
 
 	def doubleFrise(self):
 		return 2 * self.__first
 	def doubleSecond(self):
 		return 2* self.__second
 
+	# operator overloading for adding 2 calculator object
+	# following function is will use the + sign for function call, and the return typy is calaulator
+	def  __add__(self, other):
+		return calculator(self.getFrist() + other.getFrist(), self.getSecond() + other.getSecond())
+
+	# for this function i try to add a elif condition for if the other type is instance of calculator object
+	def __mul__(self, other):
+		if (type(other) in (int, float)):
+			return calculator(self.getFrist() * other, self.getSecond() * other)
+		# elif isinstance(other, calaulator):
+		# elif type(other) == my.object.calaulator:
+		# 	return calculator(self.getFrist() * other.getFrist(), self.getSecond() * other.getSecond())
+		# else:
+		# 	return 'multiplier type error!!'
+		else: 
+			return calculator(self.getFrist() * other.getFrist(), self.getSecond() * other.getSecond())
+
+
+# # calss driver
 
 # try:
 # 	c = calculator(1, 2)
@@ -56,3 +92,75 @@ class calculator:
 # except Exception as e:
 # 	print(e)
 
+
+
+# a = calculator(2, 4)
+# b = calculator(1, 3)
+# c = (a + b)
+# print(str(type(c)) + ' with Value: ', end="")
+# c.printdata()
+
+# d = (a * 2)
+# print(str(a.getObjectData()) +' * 2 = ' + str(d.getObjectData()) + ', in type: ' + str(type(d)))
+
+# f = (a * b)
+# print(str(a.getObjectData()) + ' * ' + str(b.getObjectData()) + ' = ' + str(f.getObjectData()) + ', in type: ' + str(type(f)))
+
+
+
+# Calss Inheritance
+class vehicle:
+	def __int__(self, vin, weight, manufacturer):
+		self.vin = vin
+		self.weight = weight
+		self.manufacturer = manufacturer
+
+	# getter
+	def getVin(self):
+		return self.vin
+	def getWeight(self):
+		return self.weight
+	def getManufacturer(self):
+		return self.manufacturer
+
+	# setter
+	def setVin(self, vinNumber):
+		self.vin = vinNumber
+	def setWeight(self, weight):
+		self.Weight = weight
+	def setManufacturer(self, maker):
+		self.manufacturer = maker
+
+	def printVehicle(self):
+		print(self.manufacturer, self.vin, self.Weight)
+
+	def vehicle(self):
+		print('this is from vehicle object')
+
+class car(vehicle):
+	'''car Inheritance from vehicle and rewrite vehicle and __init__'''
+	def __init__(self, vin, weight, manufacturer, seat):
+		self.vin = vin
+		self.weight = weight
+		self.manufacturer = manufacturer
+		self.seat = seat
+	
+	# getter
+	def getSeat(self):
+		return self.seat
+
+	# setter
+	def setVin(self, seatNumber):
+		self.seat = seatNumber
+
+	def printCar(self):
+		print(self.getManufacturer(), self.getVin(), self.getWeight(), self.getSeat())
+
+	def vehicle(self):
+		print('this is from car object, which is inheritance from vehicle object')
+
+# vehicle1 = vehicle('vehicle-VIN-111', 'vehicle-Weight-100LB', 'vehicle-Manufacturer')
+# vehicle1 = vehicle()
+# vehicle1.printVehicle()
+car1 = car('Car-VIN-222', 'Car-Weight-200LB', 'Car-Manufacturer', 4)
+car1.printCar()
