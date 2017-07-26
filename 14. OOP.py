@@ -26,6 +26,8 @@
 
 class calculator:
 	'this class simulates calculator operation'	# dot string, description of the class
+	# first = property(getFrist, setFrist)
+	# second = property(getSecond, setSecond)
 	def __init__(self, first, second):
 		if(type(first) not in (int, float)) or type(second) not in (int, float):
 			raise Exception('Args are not numbers!')
@@ -76,35 +78,35 @@ class calculator:
 			return calculator(self.getFrist() * other.getFrist(), self.getSecond() * other.getSecond())
 
 
-# # calss driver
+# calss driver
 
-# try:
-# 	c = calculator(1, 2)
-# 	c.printdata()
-# 	print("the first numebr: " + str(c.getFrist()))
-# 	print("the second numebr: " + str(c.getSecond()))
-# 	c.printdata()
-# 	c.setFrist(10)
-# 	c.setSecond(20)
-# 	c.printdata()
-# 	print(c.doubleFrise())
-# 	print(c.doubleSecond())
-# except Exception as e:
-# 	print(e)
+try:
+	c = calculator(1, 2)
+	c.printdata()
+	print("the first numebr: " + str(c.getFrist()))
+	print("the second numebr: " + str(c.getSecond()))
+	c.printdata()
+	c.setFrist(10)
+	c.setSecond(20)
+	c.printdata()
+	print(c.doubleFrise())
+	print(c.doubleSecond())
+except Exception as e:
+	print(e)
 
 
 
-# a = calculator(2, 4)
-# b = calculator(1, 3)
-# c = (a + b)
-# print(str(type(c)) + ' with Value: ', end="")
-# c.printdata()
+a = calculator(2, 4)
+b = calculator(1, 3)
+c = (a + b)
+print(str(type(c)) + ' with Value: ', end="")
+c.printdata()
 
-# d = (a * 2)
-# print(str(a.getObjectData()) +' * 2 = ' + str(d.getObjectData()) + ', in type: ' + str(type(d)))
+d = (a * 2)
+print(str(a.getObjectData()) +' * 2 = ' + str(d.getObjectData()) + ', in type: ' + str(type(d)))
 
-# f = (a * b)
-# print(str(a.getObjectData()) + ' * ' + str(b.getObjectData()) + ' = ' + str(f.getObjectData()) + ', in type: ' + str(type(f)))
+f = (a * b)
+print(str(a.getObjectData()) + ' * ' + str(b.getObjectData()) + ' = ' + str(f.getObjectData()) + ', in type: ' + str(type(f)))
 
 
 
@@ -150,7 +152,7 @@ class car(vehicle):
 		return self.seat
 
 	# setter
-	def setVin(self, seatNumber):
+	def setSeat(self, seatNumber):
 		self.seat = seatNumber
 
 	def printCar(self):
@@ -159,8 +161,47 @@ class car(vehicle):
 	def vehicle(self):
 		print('this is from car object, which is inheritance from vehicle object')
 
-# vehicle1 = vehicle('vehicle-VIN-111', 'vehicle-Weight-100LB', 'vehicle-Manufacturer')
-# vehicle1 = vehicle()
-# vehicle1.printVehicle()
+class Truck(vehicle):
+	"""truck class instance from vehicle class and with one capacity argument"""
+	def __init__(self, vin, weight, manufacturer, capacity):
+		self.vin = vin
+		self.weight = weight
+		self.manufacturer = manufacturer
+		self.capacity = capacity
+
+	# getter
+	def getCapacity(self):
+		return self.capacity
+
+	# setter
+	def setCapacity(self, capacity):
+		self.capacity = capacity
+
+	def printTruck(self):
+		print(self.getManufacturer(), self.getVin(), self.getWeight(), self.getCapacity())
+
 car1 = car('Car-VIN-222', 'Car-Weight-200LB', 'Car-Manufacturer', 4)
 car1.printCar()
+truck1 = Truck('truck-VIN-222', 'truck-Weight-200LB', 'truck-Manufacturer', 10000)
+truck1.printTruck()
+
+
+
+class student():
+	'''student'''
+	numberOfStudents = 0
+
+	def __init__(self, name):
+		self.name = name
+		student.numberOfStudents += 1
+
+	def __del__(self):
+		student.numberOfStudents -= 1
+
+s1 = student('tim')
+s2 = student('jack')
+# all three variable point to the same address membery
+print(student.numberOfStudents, s1.numberOfStudents, s2.numberOfStudents)
+
+del s1
+print(student.numberOfStudents)
